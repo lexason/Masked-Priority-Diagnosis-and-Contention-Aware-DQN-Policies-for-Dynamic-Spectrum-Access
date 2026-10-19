@@ -1,0 +1,40 @@
+# Scenario S3 — Poisson High Load
+# Tests scheduler performance under near-saturation conditions.
+# Jain fairness under contention is the key discriminating metric here.
+#
+# Metrics targets: utilisation ≥ 90%, Jain fairness ≥ 0.90 (harder to achieve)
+# RQ2 relevance: validates DQN robustness under stress
+
+name: S3_poisson_high_load
+description: >
+  High load Poisson scenario (85% occupancy) with elevated AWGN (+5dB).
+  Tests fairness and utilisation under near-saturation conditions.
+
+# ─── Traffic model ──────────────────────────────────────────────────────────
+traffic_model: poisson
+occupancy_pct: 85
+holding_time_s: 2.0
+
+# ─── Interference model ─────────────────────────────────────────────────────
+interference_model: awgn
+snr_db: 5.0                     # higher positive SNR = stronger signals, more interference
+tone_channel: null
+
+# ─── Channel configuration ──────────────────────────────────────────────────
+n_channels: 6
+channel_spacing_mhz: 10.0
+base_freq_mhz: 2400.0
+
+# ─── Primary user ───────────────────────────────────────────────────────────
+primary_user_channel: null
+primary_user_duty_cycle: 0.7
+
+# ─── RF power parameters ────────────────────────────────────────────────────
+noise_floor_dbm: -100.0
+signal_power_min_dbm: -60.0     # slightly stronger signals vs S1/S2 (elevated SNR)
+signal_power_max_dbm: -30.0
+
+# ─── Experiment metadata ────────────────────────────────────────────────────
+seed: 42
+duration_s: 300
+node_count: 15

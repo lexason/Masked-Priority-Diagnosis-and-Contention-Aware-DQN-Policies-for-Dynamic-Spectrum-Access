@@ -1,0 +1,43 @@
+# Scenario S4 — On/Off Burst Traffic + Tone Interference
+# Tests DQN adaptability to temporally bursty channel occupancy patterns.
+# Tone interference on channel 1 forces agents to learn channel avoidance.
+#
+# Metrics targets: utilisation ≥ 85%, Jain fairness ≥ 0.88
+# RQ2 relevance: burst adaptability — DQN should outperform round_robin
+
+name: S4_onoff_burst_tone
+description: >
+  On/Off burst traffic (75% occupancy) with CW tone interference on channel 1.
+  Tests agent adaptability to temporal bursts and structured interference.
+
+# ─── Traffic model ──────────────────────────────────────────────────────────
+traffic_model: onoff
+occupancy_pct: 75
+holding_time_s: 2.0             # not used by onoff model but kept for schema consistency
+burst_on_ms: 500.0              # mean burst ON duration (ms) — 500ms ON
+burst_off_ms: 167.0             # mean burst OFF duration (ms) — gives ~75% occupancy
+                                # occupancy = 500 / (500 + 167) ≈ 0.75 ✓
+
+# ─── Interference model ─────────────────────────────────────────────────────
+interference_model: tone_awgn
+snr_db: 0.0
+tone_channel: 1                 # channel 1 (2410 MHz) has persistent CW tone
+
+# ─── Channel configuration ──────────────────────────────────────────────────
+n_channels: 6
+channel_spacing_mhz: 10.0
+base_freq_mhz: 2400.0
+
+# ─── Primary user ───────────────────────────────────────────────────────────
+primary_user_channel: null
+primary_user_duty_cycle: 0.7
+
+# ─── RF power parameters ────────────────────────────────────────────────────
+noise_floor_dbm: -100.0
+signal_power_min_dbm: -65.0
+signal_power_max_dbm: -35.0
+
+# ─── Experiment metadata ────────────────────────────────────────────────────
+seed: 42
+duration_s: 300
+node_count: 15

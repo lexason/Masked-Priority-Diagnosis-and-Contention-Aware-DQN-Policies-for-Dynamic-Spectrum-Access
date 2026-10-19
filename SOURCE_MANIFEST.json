@@ -1,0 +1,424 @@
+{
+  "article_dataset_record": {
+    "availability": "reserved_private_until_release_gates_pass",
+    "doi": "10.5281/zenodo.23479771",
+    "relationship": "code_companion_to",
+    "version": "1.0.0"
+  },
+  "excluded": [
+    "manuscript and supplementary files",
+    "portraits and editorial material",
+    "credentials and workspace protocols",
+    "research data, checkpoints, traces, and generated results"
+  ],
+  "identity_direction": "this Git tree is stable after DOI reservation; the final data package binds the exact Git commit",
+  "manifest_self_hash": "excluded_by_design",
+  "members": [
+    {
+      "bytes": 105,
+      "file": ".gitignore",
+      "license": "MIT",
+      "sha256": "8c11a8833464fbd4b79d7aed9dc30ae8d2af1f2ae3e38e62a9833a17b872cd09"
+    },
+    {
+      "bytes": 1806,
+      "file": "CITATION.cff",
+      "license": "MIT",
+      "sha256": "08987f5b2c091e7a0b59c29aa7347af6442220f22f2ccbab705dda2c9a9e79d3"
+    },
+    {
+      "bytes": 1105,
+      "file": "LICENSE",
+      "license": "MIT",
+      "sha256": "9128ecd660099bc9adafdaca4112c6330393ec38cb8102484d221b36afeee0a4"
+    },
+    {
+      "bytes": 2363,
+      "file": "README.md",
+      "license": "MIT",
+      "sha256": "73e8185086fcb5f49d39a3e1fb8642676f96bf7765ba3ea864ca974e66402d17"
+    },
+    {
+      "bytes": 83,
+      "file": "ai/__init__.py",
+      "license": "MIT",
+      "sha256": "c13d5be95bbb4a47fd857c995ba1ac5e64237a8386f0a8e3dd4acedd53feecca"
+    },
+    {
+      "bytes": 286,
+      "file": "ai/agents/__init__.py",
+      "license": "MIT",
+      "sha256": "1be7cb5b2674954b4ec4c5b70b8e7b662e19e0de6c10dc35a2d33859be6ba7fd"
+    },
+    {
+      "bytes": 6028,
+      "file": "ai/agents/base_agent.py",
+      "license": "MIT",
+      "sha256": "3488a36290d4d3881fb076aa7b61a9d9d33e5a733eecc837a04b579b6cdad50e"
+    },
+    {
+      "bytes": 30527,
+      "file": "ai/agents/dqn_agent.py",
+      "license": "MIT",
+      "sha256": "fd04f030a1e0695b89e32a9bd3fdd11f702f2aa07da20458101f0fce8b1a6ffd"
+    },
+    {
+      "bytes": 10723,
+      "file": "ai/agents/graph_rl_agent.py",
+      "license": "MIT",
+      "sha256": "dc627e0b1eb30bd293a4f2bde8354a85f7d594f67f02d4b2c8398c6a025c8379"
+    },
+    {
+      "bytes": 353,
+      "file": "ai/training/__init__.py",
+      "license": "MIT",
+      "sha256": "1e83bcedf4214a9e6318581a9c6a1bfa10526cd322057d6d6dabebbaba79efbc"
+    },
+    {
+      "bytes": 6926,
+      "file": "ai/training/replay_buffer.py",
+      "license": "MIT",
+      "sha256": "524e8fec949be19abf48a9f19c4301c1da35af591ef5dfba98fb02bf1715c74b"
+    },
+    {
+      "bytes": 7938,
+      "file": "ai/training/reward.py",
+      "license": "MIT",
+      "sha256": "1f2402d73acf54e5b0e4fa43c15981a81f2e916d8433fec276eaf5a7aaa0ac53"
+    },
+    {
+      "bytes": 1638,
+      "file": "article_reanalysis/README.md",
+      "license": "MIT",
+      "sha256": "0d0aefabc13d3338de63d75d8fe1ab3917e4cd824ec982365cd789bd57e0ae54"
+    },
+    {
+      "bytes": 13603,
+      "file": "article_reanalysis/build_archived_gold.py",
+      "license": "MIT",
+      "sha256": "e3473cb078e6f4209a65bd2771888eed6c0125a980a6bbcebe5beb41218b8ea0"
+    },
+    {
+      "bytes": 3066,
+      "file": "article_reanalysis/build_prospective_parent_gold.py",
+      "license": "MIT",
+      "sha256": "c34c1cb99b7aecfab8bff7ed3fbceb21dbbffcf5e72dbb8ae6f5e208a2d799fc"
+    },
+    {
+      "bytes": 29814,
+      "file": "article_reanalysis/reanalyse.py",
+      "license": "MIT",
+      "sha256": "4c19d29f992131e9c289c17ba4d0cf0c65d889c5a43df060c57f8f4d7594aba1"
+    },
+    {
+      "bytes": 23425,
+      "file": "article_reanalysis/recompute_inference.py",
+      "license": "MIT",
+      "sha256": "0d6416d94f270b772e2e711cab7aa1420ff7956b162c65db0ece25afde5df9f4"
+    },
+    {
+      "bytes": 1152,
+      "file": "article_reanalysis/test_parent_gold_derivations.py",
+      "license": "MIT",
+      "sha256": "92eb47cee12bfac5dbda9388b318403c14829fe26bdd37366424b0579be1cfac"
+    },
+    {
+      "bytes": 4135,
+      "file": "article_reanalysis/test_reanalyse_smoke.py",
+      "license": "MIT",
+      "sha256": "c3118506def2fc9426cf05b7e4cdca14eb9d98bd21b2a80d57965d6ebce8a545"
+    },
+    {
+      "bytes": 1432,
+      "file": "article_reanalysis/test_reanalyse_smoke_contract.py",
+      "license": "MIT",
+      "sha256": "2f1624d8b62c525ab84b1f109d46733454538594a04fe2983e2d511cabbe643c"
+    },
+    {
+      "bytes": 1299,
+      "file": "article_reanalysis/test_recompute_inference.py",
+      "license": "MIT",
+      "sha256": "a813e3890d5cc7f4fe09df3e5a09c05df57e693102b7a23ca49c8969307cdd1b"
+    },
+    {
+      "bytes": 4911,
+      "file": "article_reanalysis/verify_reproduction.py",
+      "license": "MIT",
+      "sha256": "d0fa82427c1b5e2b1371e9f7adb58bb8e5947c7b1db897d607a6ae9ea6ac193f"
+    },
+    {
+      "bytes": 886,
+      "file": "prospective_collision_study/README.md",
+      "license": "MIT",
+      "sha256": "d6ba6fe151a13a5993a6016e63a649de1c9952c8b5138b42702b9392c0c50deb"
+    },
+    {
+      "bytes": 0,
+      "file": "prospective_collision_study/main/__init__.py",
+      "license": "MIT",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "file": "prospective_collision_study/main/revision/__init__.py",
+      "license": "MIT",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 11033,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/PROTOCOL.md",
+      "license": "MIT",
+      "sha256": "00926dc032cf98093b8f2112593dcfd02e5a266e4b7f6619aea339c250f55f2c"
+    },
+    {
+      "bytes": 9534,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/PROTOCOL_FREEZE.json",
+      "license": "MIT",
+      "sha256": "2877300949e33a3ea63441501dd31621427874760accb0826d135708ac05afc0"
+    },
+    {
+      "bytes": 5452,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/READINESS_REPORT.md",
+      "license": "MIT",
+      "sha256": "97d3f1f85bcc9c6444c2335063781faf4a8ec8e9744017c8c0de9454377127fa"
+    },
+    {
+      "bytes": 1953,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/README.md",
+      "license": "MIT",
+      "sha256": "4188ab73cbd846903b175978ea8e6ad2d60b88d5bb8d169c38821e8b5aa38120"
+    },
+    {
+      "bytes": 77,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/__init__.py",
+      "license": "MIT",
+      "sha256": "feb484ba1401b779b8f1a5d9fe11ca2f80c3be24cb6ff03e8772328fbaad8ac2"
+    },
+    {
+      "bytes": 40691,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/analyze.py",
+      "license": "MIT",
+      "sha256": "943787cfabd341062346fbc46e3a3dd8919fbb401a3ebb541b70c1fbe76caca9"
+    },
+    {
+      "bytes": 10105,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/config.py",
+      "license": "MIT",
+      "sha256": "fa500dd60ced07b7fc87d66daeed8dd066d48a323427025d461c63e2a0b15996"
+    },
+    {
+      "bytes": 11859,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/environment.py",
+      "license": "MIT",
+      "sha256": "92b2264a7ced72a749029d21647b933e28bfad73af07e0bf978df22ece3ec1f7"
+    },
+    {
+      "bytes": 18233,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/evaluate.py",
+      "license": "MIT",
+      "sha256": "051db459561001a0e87ebb99f951608ef9be145e06ce256589d5b2fd8c56447c"
+    },
+    {
+      "bytes": 10478,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/model.py",
+      "license": "MIT",
+      "sha256": "aa2ce6fe975dc06e8651867af49399050437663821bb537ebd578430a2c511f7"
+    },
+    {
+      "bytes": 28864,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/plot.py",
+      "license": "MIT",
+      "sha256": "64c72cf4b574e8930218715b1ad0a0ee31d074f35853509b19760cade2da95fd"
+    },
+    {
+      "bytes": 7346,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/policies.py",
+      "license": "MIT",
+      "sha256": "c68850ab38e4e9883b44e1b74c6d580813384b6605aefc51f8913f39ffc6e1ac"
+    },
+    {
+      "bytes": 19429,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/provenance.py",
+      "license": "MIT",
+      "sha256": "30aed0c5bc073439c44d3cf21038b444cf5eab3e30af8337a1250425275c109b"
+    },
+    {
+      "bytes": 7352,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/test_evaluation_v2.py",
+      "license": "MIT",
+      "sha256": "80be710fdf2bc854857d3ba9819c7dc1471cfbb4b52a49a60590c559b782a6a8"
+    },
+    {
+      "bytes": 6459,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/test_inference.py",
+      "license": "MIT",
+      "sha256": "5c474bb885bc228df1104ad064ff86dc50bbd5fade145423367e5a841074d8d4"
+    },
+    {
+      "bytes": 18506,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/test_integrity.py",
+      "license": "MIT",
+      "sha256": "af450ec651611b6600be2e8c08909a1f5a34dac28b164ab2fdddaba3930e3c55"
+    },
+    {
+      "bytes": 11257,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/test_pipeline.py",
+      "license": "MIT",
+      "sha256": "275e2efb19643a191618dca45221b9891786f2bda7f574777645ca1270f2c32a"
+    },
+    {
+      "bytes": 10886,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/train.py",
+      "license": "MIT",
+      "sha256": "bb31c150d29cd96b7d478452d4c0647f6f09986f1fabcebe33e39308e886bef2"
+    },
+    {
+      "bytes": 31397,
+      "file": "prospective_collision_study/main/revision/crn_ca_pr1_20261017/validation.py",
+      "license": "MIT",
+      "sha256": "a321dadc8fc292a753bf1296cfcb9d4ab920566dbb6187c860aa7f121c2dd3f4"
+    },
+    {
+      "bytes": 4072,
+      "file": "prospective_collision_study/pyproject.toml",
+      "license": "MIT",
+      "sha256": "703ad7964921bdc5b23beddfe9edb3af7464a5851f228998e8a87ed4f0f176ce"
+    },
+    {
+      "bytes": 659216,
+      "file": "prospective_collision_study/uv.lock",
+      "license": "MIT",
+      "sha256": "d7d57ec63b2e88e493300671fa09c2acda434a4270c272021b8f4d5b61c0f4b6"
+    },
+    {
+      "bytes": 4077,
+      "file": "pyproject.toml",
+      "license": "MIT",
+      "sha256": "052f80e3d46c51bdb94b80acaadc598aabd6b9d1160bb0bd2564c433437c5cc8"
+    },
+    {
+      "bytes": 2475,
+      "file": "scenarios/S1_baseline_low_load.yaml",
+      "license": "MIT",
+      "sha256": "8d6af8cdfc60439dccd7ba59d51bbc946c41c7fa8b499ed7891ece5349f8edd6"
+    },
+    {
+      "bytes": 2051,
+      "file": "scenarios/S2_poisson_moderate.yaml",
+      "license": "MIT",
+      "sha256": "561ca6d8059297028c64706ee978f409e972240c32929eaf2ef679b188201596"
+    },
+    {
+      "bytes": 2149,
+      "file": "scenarios/S3_poisson_high_load.yaml",
+      "license": "MIT",
+      "sha256": "ba16edef8cda2bd6b02ff7940890c536e7ef86b9fc207b913a9fbe3d39993556"
+    },
+    {
+      "bytes": 2434,
+      "file": "scenarios/S4_onoff_burst_tone.yaml",
+      "license": "MIT",
+      "sha256": "dd4b3017668309871440b4b5ec922c29643e2654c8050aeac3776ab2008a8fe0"
+    },
+    {
+      "bytes": 2297,
+      "file": "scenarios/S5_selfsimilar_primary_user.yaml",
+      "license": "MIT",
+      "sha256": "3735c0f8e55fb256af5fc2d5c575e2e1c865d56445261e7985b1ee6219717d21"
+    },
+    {
+      "bytes": 20249,
+      "file": "scripts/audits/audit_feature_sensitivity.py",
+      "license": "MIT",
+      "sha256": "60e974199a63b84e25a571ca71bdc847794317170f521012dea160aa3c5af4b4"
+    },
+    {
+      "bytes": 8861,
+      "file": "scripts/audits/audit_generator_dispersion.py",
+      "license": "MIT",
+      "sha256": "b0f51563b335c331662e871a16cfd2df48a92196a8cc7ffceb17bc3a1c7d8485"
+    },
+    {
+      "bytes": 32774,
+      "file": "scripts/audits/audit_priority_collapse.py",
+      "license": "MIT",
+      "sha256": "52dc167830e3eed97e3e9d35ad7a81029d42aadc161a7de85db0c9f0d190ec0d"
+    },
+    {
+      "bytes": 12760,
+      "file": "scripts/audits/audit_priority_positive_controls.py",
+      "license": "MIT",
+      "sha256": "e047fa3a1252e5afaf35be9dede71a6c9dd6575d670a13575205d114f7d0651f"
+    },
+    {
+      "bytes": 1917,
+      "file": "scripts/audits/test_precedence_certificate.py",
+      "license": "MIT",
+      "sha256": "db6884cbd154f32211544a7c0423e70887a83d6cf67da596fd747f87028a5da1"
+    },
+    {
+      "bytes": 80,
+      "file": "sdr/__init__.py",
+      "license": "MIT",
+      "sha256": "e59b3dfd67b3ad20cc73545fb8853ed837c55d046086abf96c4c35c48c7d8b8f"
+    },
+    {
+      "bytes": 307,
+      "file": "sdr/sensing/__init__.py",
+      "license": "MIT",
+      "sha256": "d6b27366de04d1462378afe8a4ae57310bb78cc7c8df43c88e3cd630f2c2dae4"
+    },
+    {
+      "bytes": 10871,
+      "file": "sdr/sensing/channel_state.py",
+      "license": "MIT",
+      "sha256": "526c6558e6f091405fbc876df2b51a25ae315d509485d798705529fb7543a75a"
+    },
+    {
+      "bytes": 8823,
+      "file": "studies/crn-2026-003-finite-domain-dsa/analysis/generate_architecture_figure.py",
+      "license": "MIT",
+      "sha256": "147b9f97603bca1f97120400f994a6c1879ac0e99e2acf59b696583fc5cdf010"
+    },
+    {
+      "bytes": 38996,
+      "file": "studies/crn-2026-003-finite-domain-dsa/analysis/generate_publication_figures.py",
+      "license": "MIT",
+      "sha256": "d80b75fda7d29e7453b8ff07044bd912d54d847d1a48a389ab6947ec5fd634f3"
+    },
+    {
+      "bytes": 24352,
+      "file": "studies/crn-2026-003-finite-domain-dsa/analysis/generate_result_macros.py",
+      "license": "MIT",
+      "sha256": "3f98beee821f053275d0808f79b68f4c4a168e7c114d0ac33713804bda5a2294"
+    },
+    {
+      "bytes": 4351,
+      "file": "studies/crn-2026-003-finite-domain-dsa/analysis/test_publication_figures.py",
+      "license": "MIT",
+      "sha256": "8c8279dada882f4543609a4038fd1d35175e4d5bf9a4cd4fd68b28acfba7db65"
+    },
+    {
+      "bytes": 2673,
+      "file": "studies/crn-2026-003-finite-domain-dsa/analysis/test_result_macros.py",
+      "license": "MIT",
+      "sha256": "2be4e16760c83f38615254cb365258d7fc28900213c2dc2957406501218440c6"
+    },
+    {
+      "bytes": 659216,
+      "file": "uv.lock",
+      "license": "MIT",
+      "sha256": "d7d57ec63b2e88e493300671fa09c2acda434a4270c272021b8f4d5b61c0f4b6"
+    }
+  ],
+  "repository": "https://github.com/lexason/Deep-Q-Network-Policies-for-Dynamic-Spectrum-Access",
+  "schema_version": 1,
+  "scope": "MIT-licensed source and documentation only",
+  "software_package_version": "0.1.0",
+  "text_normalization": {
+    "scientific_logic_changed": false,
+    "scope": "GitHub source stage only",
+    "transform": "strip trailing spaces/tabs and trailing blank lines; retain one EOF newline"
+  },
+  "title": "ChainRadioNet-AI: A Multi-Seed Benchmark of Reinforcement Learning for Dynamic Spectrum Access"
+}

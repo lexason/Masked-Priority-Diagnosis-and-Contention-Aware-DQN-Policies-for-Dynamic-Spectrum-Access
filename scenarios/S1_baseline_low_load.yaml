@@ -1,0 +1,40 @@
+# Scenario S1 — Baseline Low Load
+# Paper 1 reference scenario: establishes clean performance floor.
+# All schedulers should perform well here; DQN advantage is minimal at low load.
+#
+# Metrics targets: utilisation ≥ 70%, Jain fairness ≥ 0.95
+# RQ2 relevance: establishes DQN vs baseline gap under benign conditions
+
+name: S1_baseline_low_load
+description: >
+  Baseline scenario with uniform low load (30% occupancy) and mild AWGN.
+  Used to establish performance floor for all four schedulers.
+
+# ─── Traffic model ──────────────────────────────────────────────────────────
+traffic_model: uniform          # uniform | poisson | onoff | self_similar
+occupancy_pct: 30               # target channel occupancy (%)
+holding_time_s: 2.0             # mean channel holding time (Poisson model; ignored for uniform)
+
+# ─── Interference model ─────────────────────────────────────────────────────
+interference_model: awgn        # awgn | tone_awgn
+snr_db: -5.0                    # SNR relative to noise floor (dB); negative = noisier
+tone_channel: null              # channel ID of CW tone (tone_awgn only)
+
+# ─── Channel configuration ──────────────────────────────────────────────────
+n_channels: 6
+channel_spacing_mhz: 10.0
+base_freq_mhz: 2400.0           # channel 0 centre frequency (MHz)
+
+# ─── Primary user ───────────────────────────────────────────────────────────
+primary_user_channel: null      # no primary user in S1
+primary_user_duty_cycle: 0.7   # fraction of time PU is active (ignored if null)
+
+# ─── RF power parameters ────────────────────────────────────────────────────
+noise_floor_dbm: -100.0
+signal_power_min_dbm: -65.0
+signal_power_max_dbm: -35.0
+
+# ─── Experiment metadata ────────────────────────────────────────────────────
+seed: 42
+duration_s: 300
+node_count: 15

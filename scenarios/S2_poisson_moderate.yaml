@@ -1,0 +1,40 @@
+# Scenario S2 — Poisson Moderate Load
+# Standard operating condition for Paper 1 primary results.
+# Poisson arrivals with M/M/1/1 channel model, moderate competition.
+#
+# Metrics targets: utilisation ≥ 90%, Jain fairness ≥ 0.90
+# RQ2 relevance: primary scenario for demonstrating DQN superiority
+
+name: S2_poisson_moderate
+description: >
+  Moderate load with Poisson channel arrivals (60% occupancy) and 0dB AWGN.
+  Primary scenario for validating DQN vs baseline schedulers.
+
+# ─── Traffic model ──────────────────────────────────────────────────────────
+traffic_model: poisson
+occupancy_pct: 60
+holding_time_s: 2.0             # mean channel holding time (seconds)
+
+# ─── Interference model ─────────────────────────────────────────────────────
+interference_model: awgn
+snr_db: 0.0
+tone_channel: null
+
+# ─── Channel configuration ──────────────────────────────────────────────────
+n_channels: 6
+channel_spacing_mhz: 10.0
+base_freq_mhz: 2400.0
+
+# ─── Primary user ───────────────────────────────────────────────────────────
+primary_user_channel: null
+primary_user_duty_cycle: 0.7
+
+# ─── RF power parameters ────────────────────────────────────────────────────
+noise_floor_dbm: -100.0
+signal_power_min_dbm: -65.0
+signal_power_max_dbm: -35.0
+
+# ─── Experiment metadata ────────────────────────────────────────────────────
+seed: 42
+duration_s: 300
+node_count: 15
