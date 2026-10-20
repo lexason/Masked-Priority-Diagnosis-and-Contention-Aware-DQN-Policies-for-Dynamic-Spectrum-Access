@@ -1,7 +1,7 @@
 # Prospective collision-aware study
 
 This installable module contains the source-frozen collision-aware experiment
-for “ChainRadioNet-AI: A Multi-Seed Benchmark of Reinforcement Learning for Dynamic Spectrum Access”. It contains 12,672 aggregate evaluation
+for “Masked-Priority Diagnosis and Contention-Aware Evaluation of Deep Q-Network Policies for Dynamic Spectrum Access”. It contains 12,672 aggregate evaluation
 records and 60 prospective checkpoints. It contains no slot-level collision
 records.
 

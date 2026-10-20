@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite the software and article dataset."
 type: software
-title: "ChainRadioNet-AI: A Multi-Seed Benchmark of Reinforcement Learning for Dynamic Spectrum Access"
+title: "Masked-Priority Diagnosis and Contention-Aware Evaluation of Deep Q-Network Policies for Dynamic Spectrum Access"
 version: "0.1.0"
 license: MIT
 date-released: "2026-10-20"
-repository-code: "https://github.com/lexason/Deep-Q-Network-Policies-for-Dynamic-Spectrum-Access"
+repository-code: "https://github.com/lexason/Masked-Priority-Diagnosis-and-Contention-Aware-DQN-Policies-for-Dynamic-Spectrum-Access"
 authors:
   - family-names: Okon
     given-names: Asuquo A.
@@ -25,7 +25,7 @@ authors:
     orcid: "https://orcid.org/0000-0002-0141-8973"
 references:
   - type: data
-    title: "ChainRadioNet-AI: A Multi-Seed Benchmark of Reinforcement Learning for Dynamic Spectrum Access"
+    title: "Masked-Priority Diagnosis and Contention-Aware Evaluation of Deep Q-Network Policies for Dynamic Spectrum Access"
     version: "1.0.0"
     doi: "10.5281/zenodo.23479771"
     authors:

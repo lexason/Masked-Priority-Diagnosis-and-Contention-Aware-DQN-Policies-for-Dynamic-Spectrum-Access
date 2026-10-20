@@ -1,4 +1,4 @@
-# ChainRadioNet-AI: A Multi-Seed Benchmark of Reinforcement Learning for Dynamic Spectrum Access
+# Masked-Priority Diagnosis and Contention-Aware Evaluation of Deep Q-Network Policies for Dynamic Spectrum Access
 
 This repository is the MIT-licensed code companion for the standalone
 original research article of the same title. It contains executable policy
@@ -9,10 +9,13 @@ The inherited path `prospective_collision_study/main/revision/...` identifies
 the frozen experiment source tree; it does not characterize this standalone
 article as a revision or correction.
 
-Research data, trained checkpoints, aggregate results, and full traces are
-distributed through the article-specific Zenodo record. The article-specific version DOI is
-10.5281/zenodo.23479771; the data record may remain private
-until its stated release gates pass. The separately sealed evidence
+Aggregate research data, trained checkpoints, results, and validation
+materials are distributed through the article-specific Zenodo record. The six
+multi-gigabyte archival trace ZIPs are intentionally excluded from the minimum
+deposit; native row-level revalidation of trace-derived audits requires that
+separately sealed corpus. The article-specific
+version DOI is 10.5281/zenodo.23479771; consult that DOI
+landing page for the record's current availability. The separately sealed evidence
 record at https://doi.org/10.5281/zenodo.23393130 is provenance only and
 is related as `isDerivedFrom`.
 

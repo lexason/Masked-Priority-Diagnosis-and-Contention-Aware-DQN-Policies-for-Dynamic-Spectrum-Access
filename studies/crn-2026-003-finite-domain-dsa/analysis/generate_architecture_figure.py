@@ -178,8 +178,8 @@ def render() -> bytes:
     fig.savefig(
         stream, format="pdf", dpi=300,
         metadata={
-            "Title": "ChainRadioNet-AI evidence architecture",
-            "Author": "ChainRadioNet-AI authors",
+            "Title": "Masked-priority diagnosis and contention-aware DQN evidence architecture",
+            "Author": "Article authors",
             "Subject": "Outcome-neutral separation of archived and prospective studies",
             "Creator": "generate_architecture_figure.py",
             "CreationDate": FIXED_TIME,

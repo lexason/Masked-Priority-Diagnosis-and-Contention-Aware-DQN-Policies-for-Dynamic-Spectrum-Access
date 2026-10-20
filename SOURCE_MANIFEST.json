@@ -1,6 +1,6 @@
 {
   "article_dataset_record": {
-    "availability": "reserved_private_until_release_gates_pass",
+    "availability": "consult_doi_landing_page",
     "doi": "10.5281/zenodo.23479771",
     "relationship": "code_companion_to",
     "version": "1.0.0"
@@ -21,10 +21,10 @@
       "sha256": "8c11a8833464fbd4b79d7aed9dc30ae8d2af1f2ae3e38e62a9833a17b872cd09"
     },
     {
-      "bytes": 1806,
+      "bytes": 1878,
       "file": "CITATION.cff",
       "license": "MIT",
-      "sha256": "08987f5b2c091e7a0b59c29aa7347af6442220f22f2ccbab705dda2c9a9e79d3"
+      "sha256": "575e4055daa0a2d5c04602f8c340109a65f1227a77cd63cf5bb495ec1a2392ea"
     },
     {
       "bytes": 1105,
@@ -33,10 +33,10 @@
       "sha256": "9128ecd660099bc9adafdaca4112c6330393ec38cb8102484d221b36afeee0a4"
     },
     {
-      "bytes": 2363,
+      "bytes": 2577,
       "file": "README.md",
       "license": "MIT",
-      "sha256": "73e8185086fcb5f49d39a3e1fb8642676f96bf7765ba3ea864ca974e66402d17"
+      "sha256": "0202b211577ca243fe58434df53d5a9dc050de346a79ef3d6de8bfc169acbcbc"
     },
     {
       "bytes": 83,
@@ -96,7 +96,7 @@
       "bytes": 13603,
       "file": "article_reanalysis/build_archived_gold.py",
       "license": "MIT",
-      "sha256": "e3473cb078e6f4209a65bd2771888eed6c0125a980a6bbcebe5beb41218b8ea0"
+      "sha256": "303aa47d40641d9bbc30e98c13f1475b558c5b050cea8c78bddc1e25f7a54def"
     },
     {
       "bytes": 3066,
@@ -147,10 +147,10 @@
       "sha256": "d0fa82427c1b5e2b1371e9f7adb58bb8e5947c7b1db897d607a6ae9ea6ac193f"
     },
     {
-      "bytes": 886,
+      "bytes": 904,
       "file": "prospective_collision_study/README.md",
       "license": "MIT",
-      "sha256": "d6ba6fe151a13a5993a6016e63a649de1c9952c8b5138b42702b9392c0c50deb"
+      "sha256": "b677ae1e3c02ac6fe3710abb6073a646b63277641689548bd47d23b847f84d49"
     },
     {
       "bytes": 0,
@@ -375,10 +375,10 @@
       "sha256": "526c6558e6f091405fbc876df2b51a25ae315d509485d798705529fb7543a75a"
     },
     {
-      "bytes": 8823,
+      "bytes": 8848,
       "file": "studies/crn-2026-003-finite-domain-dsa/analysis/generate_architecture_figure.py",
       "license": "MIT",
-      "sha256": "147b9f97603bca1f97120400f994a6c1879ac0e99e2acf59b696583fc5cdf010"
+      "sha256": "1d83841c847bbb397eb49d7d7e92b59cdc1135efb09ccbf6138513208ed5de13"
     },
     {
       "bytes": 38996,
@@ -390,7 +390,7 @@
       "bytes": 24352,
       "file": "studies/crn-2026-003-finite-domain-dsa/analysis/generate_result_macros.py",
       "license": "MIT",
-      "sha256": "3f98beee821f053275d0808f79b68f4c4a168e7c114d0ac33713804bda5a2294"
+      "sha256": "a20cb80f0923fe284d7789f758fe80eefba1e688e37fded08e6b041f70c2f6f6"
     },
     {
       "bytes": 4351,
@@ -411,7 +411,7 @@
       "sha256": "d7d57ec63b2e88e493300671fa09c2acda434a4270c272021b8f4d5b61c0f4b6"
     }
   ],
-  "repository": "https://github.com/lexason/Deep-Q-Network-Policies-for-Dynamic-Spectrum-Access",
+  "repository": "https://github.com/lexason/Masked-Priority-Diagnosis-and-Contention-Aware-DQN-Policies-for-Dynamic-Spectrum-Access",
   "schema_version": 1,
   "scope": "MIT-licensed source and documentation only",
   "software_package_version": "0.1.0",
@@ -420,5 +420,5 @@
     "scope": "GitHub source stage only",
     "transform": "strip trailing spaces/tabs and trailing blank lines; retain one EOF newline"
   },
-  "title": "ChainRadioNet-AI: A Multi-Seed Benchmark of Reinforcement Learning for Dynamic Spectrum Access"
+  "title": "Masked-Priority Diagnosis and Contention-Aware Evaluation of Deep Q-Network Policies for Dynamic Spectrum Access"
 }

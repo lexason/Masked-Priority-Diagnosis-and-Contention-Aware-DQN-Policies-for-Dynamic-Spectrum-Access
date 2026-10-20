@@ -18,7 +18,7 @@ COMPACT_MEMBER = Path(
 )
 REPLICATION_MEMBER = "results/audits/priority_collapse/priority_collapse_audit.json"
 ORIGINAL_COMPACT_SHA256 = "c3c71c75fbd735517602ab9973012465d286deee898835a8604a47c9ea3269eb"
-PUBLIC_COMPACT_SHA256 = "4d0cbbc9e84701d073210c8b523b966932c3e6fd500d59f6fd339b539565a0fb"
+PUBLIC_COMPACT_SHA256 = "a971667fd50ac02931d40e24ea17a8892b8b42cc9ebfc232a85a0aeff4ad62eb"
 INPUTS = {
     "priority_collapse": (
         Path("outputs/priority_collapse_audit.json"),

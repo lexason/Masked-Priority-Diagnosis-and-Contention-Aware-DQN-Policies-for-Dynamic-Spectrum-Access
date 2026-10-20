@@ -19,7 +19,7 @@ DEFAULT_MANUSCRIPT_COPY = STUDY_ROOT.parents[1] / "main/manuscript/result_macros
 SOURCES = {
     "archived": (
         STUDY_ROOT / "evidence/gold/archived/recomputed.json",
-        "335f9c3264b09263ebc2b7ad1c9da46e7691538f65158daa48cb053d45017d9c",
+        "1054a8a2a26acf9acedd8cfa1bf5f15879bebc62488fd08eb7ef765af524d890",
     ),
     "inference": (
         STUDY_ROOT / "evidence/gold/inference/recomputed.json",
