@@ -159,20 +159,32 @@ def render() -> bytes:
         _box(ax, xs[1], 0.44, widths[1], 0.88, title="COMMON STATE",
              body="Availability +\npacket queues", edge=GREEN, fill=GREEN_FILL),
         _box(ax, xs[2], 0.44, widths[2], 0.88, title="JOINT ACTIONS",
-             body="3 DQN variants\n+ comparators", edge=GREEN, fill=GREEN_FILL),
+             body="3 Double-DQN variants\n+ comparators", edge=GREEN, fill=GREEN_FILL),
         _box(ax, xs[3], 0.44, widths[3], 0.88, title="OUTCOME KERNEL",
              body="$\\geq2$: collision\nsingleton: link trial", edge=ORANGE, fill=ORANGE_FILL),
         _box(ax, xs[4], 0.44, widths[4], 0.88, title="PACKET STATE",
              body="Delivery or\nrequeue", edge=GREEN, fill=GREEN_FILL),
         _box(ax, xs[5], 0.44, widths[5], 0.88, title="GOLD EVIDENCE",
-             body="DQN: 20 seeds $\\times$\n8 cells $\\times$ 24 blocks\n+ claims and hashes",
+             body=(
+                 "Double-DQN: 20 seeds $\\times$\n"
+                 "8 cells $\\times$ 24 blocks\n+ claims and hashes"
+             ),
              edge=PURPLE, fill=PURPLE_FILL, dashed=True, double=True),
     ]
     for index in range(4):
         _arrow(ax, bottom[index], bottom[index + 1], GREEN)
     _arrow(ax, bottom[4], bottom[5], PURPLE, dashed=True)
-    ax.text(0.14, 0.27, "Comparators: 8 cells $\\times$ 24 blocks; training seed is the DQN independent unit.",
-            ha="left", va="center", fontsize=6.55, color=TEXT, fontstyle="italic")
+    ax.text(
+        0.14,
+        0.27,
+        "Comparators: 8 cells $\\times$ 24 blocks; Double-DQN training seed "
+        "is the independent unit.",
+        ha="left",
+        va="center",
+        fontsize=6.55,
+        color=TEXT,
+        fontstyle="italic",
+    )
 
     stream = io.BytesIO()
     fig.savefig(

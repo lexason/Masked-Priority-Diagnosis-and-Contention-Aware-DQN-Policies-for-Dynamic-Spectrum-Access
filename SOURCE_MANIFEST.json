@@ -1,9 +1,9 @@
 {
   "article_dataset_record": {
     "availability": "consult_doi_landing_page",
-    "doi": "10.5281/zenodo.23479771",
+    "doi": "10.5281/zenodo.23527228",
     "relationship": "code_companion_to",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "excluded": [
     "manuscript and supplementary files",
@@ -24,7 +24,7 @@
       "bytes": 1878,
       "file": "CITATION.cff",
       "license": "MIT",
-      "sha256": "575e4055daa0a2d5c04602f8c340109a65f1227a77cd63cf5bb495ec1a2392ea"
+      "sha256": "0adb725a27d83e5607e572e9fea39c48c07dfd637bbe17c9cd9e27a262d8e098"
     },
     {
       "bytes": 1105,
@@ -36,7 +36,7 @@
       "bytes": 2577,
       "file": "README.md",
       "license": "MIT",
-      "sha256": "0202b211577ca243fe58434df53d5a9dc050de346a79ef3d6de8bfc169acbcbc"
+      "sha256": "a5b84fbd5bd7ceb3475f7e33e603300e76d66c1a137473371c834127b277f81e"
     },
     {
       "bytes": 83,
@@ -375,22 +375,34 @@
       "sha256": "526c6558e6f091405fbc876df2b51a25ae315d509485d798705529fb7543a75a"
     },
     {
-      "bytes": 8848,
+      "bytes": 105124,
+      "file": "studies/crn-2026-003-finite-domain-dsa/analysis/export_reviewer_evidence.py",
+      "license": "MIT",
+      "sha256": "5fe363da6be64e148645c36e5d41d0026e209dd2f20f425e5d02e027d10cc1f7"
+    },
+    {
+      "bytes": 8993,
       "file": "studies/crn-2026-003-finite-domain-dsa/analysis/generate_architecture_figure.py",
       "license": "MIT",
-      "sha256": "1d83841c847bbb397eb49d7d7e92b59cdc1135efb09ccbf6138513208ed5de13"
+      "sha256": "3f188b17e405f4b2c882d18075a187038fe7fa9f897f6a565a2496d1e3468358"
     },
     {
-      "bytes": 38996,
+      "bytes": 40807,
       "file": "studies/crn-2026-003-finite-domain-dsa/analysis/generate_publication_figures.py",
       "license": "MIT",
-      "sha256": "d80b75fda7d29e7453b8ff07044bd912d54d847d1a48a389ab6947ec5fd634f3"
+      "sha256": "ce0e3a1844c83d1016abaa2aede3f4f040f4555e0be6b4e96fbb564936e1e231"
     },
     {
-      "bytes": 24352,
+      "bytes": 24869,
       "file": "studies/crn-2026-003-finite-domain-dsa/analysis/generate_result_macros.py",
       "license": "MIT",
-      "sha256": "a20cb80f0923fe284d7789f758fe80eefba1e688e37fded08e6b041f70c2f6f6"
+      "sha256": "e40f90aca619b130ef54699b21d69490f2610bce7b4aad7320ad6c6549b03c80"
+    },
+    {
+      "bytes": 5733,
+      "file": "studies/crn-2026-003-finite-domain-dsa/analysis/test_claim_registry.py",
+      "license": "MIT",
+      "sha256": "018947f13cf3616efafdc3b7b1a4a5a7f7b23604dc5391f1c1269df285810aef"
     },
     {
       "bytes": 4351,
@@ -403,6 +415,12 @@
       "file": "studies/crn-2026-003-finite-domain-dsa/analysis/test_result_macros.py",
       "license": "MIT",
       "sha256": "2be4e16760c83f38615254cb365258d7fc28900213c2dc2957406501218440c6"
+    },
+    {
+      "bytes": 20000,
+      "file": "studies/crn-2026-003-finite-domain-dsa/analysis/test_reviewer_evidence_export.py",
+      "license": "MIT",
+      "sha256": "0aa11053e5bc8cc8c50d38e23c3e41fa6c2a83d6e0c891e05767e33389898c27"
     },
     {
       "bytes": 659216,

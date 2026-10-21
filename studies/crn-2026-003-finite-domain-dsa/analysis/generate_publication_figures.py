@@ -89,23 +89,23 @@ FACTOR_ORDER: Final = (
     "markov_o60_a25",
 )
 FACTOR_LABELS: Final = {
-    "iid_o30_a10": "IID  .30/.10",
-    "iid_o30_a25": "IID  .30/.25",
-    "iid_o60_a10": "IID  .60/.10",
-    "iid_o60_a25": "IID  .60/.25",
-    "markov_o30_a10": "Markov  .30/.10",
-    "markov_o30_a25": "Markov  .30/.25",
-    "markov_o60_a10": "Markov  .60/.10",
-    "markov_o60_a25": "Markov  .60/.25",
+    "iid_o30_a10": "IID\n$\\rho=.30,\\ \\lambda=.10$",
+    "iid_o30_a25": "IID\n$\\rho=.30,\\ \\lambda=.25$",
+    "iid_o60_a10": "IID\n$\\rho=.60,\\ \\lambda=.10$",
+    "iid_o60_a25": "IID\n$\\rho=.60,\\ \\lambda=.25$",
+    "markov_o30_a10": "Markov\n$\\rho=.30,\\ \\lambda=.10$",
+    "markov_o30_a25": "Markov\n$\\rho=.30,\\ \\lambda=.25$",
+    "markov_o60_a10": "Markov\n$\\rho=.60,\\ \\lambda=.10$",
+    "markov_o60_a25": "Markov\n$\\rho=.60,\\ \\lambda=.25$",
 }
 
 POLICY_LABELS: Final = {
     "centralized_quality_matching": "Centralized quality\nmatching (reference)",
     "phase_orthogonal": "Phase-orthogonal",
-    "collision_aware_dqn": "Full DQN",
+    "collision_aware_dqn": "Full Double-DQN",
     "quality_greedy_persistent": "Quality-greedy",
-    "history_free_dqn": "Outcome-history-\nremoved DQN",
-    "coordination_blind_dqn": "Coordination-cue-\nremoved DQN",
+    "history_free_dqn": "Outcome-history-\nremoved Double-DQN",
+    "coordination_blind_dqn": "Coordination-cue-\nremoved Double-DQN",
     "uniform_legal": "Uniform legal",
     "round_robin": "Round robin",
     "static_priority": "Static priority",
@@ -463,7 +463,7 @@ def render_archived(data: dict[str, Any]) -> bytes:
             label="Exact expectation",
         )
         ax.set_xticks(np.arange(5), labels)
-        ax.set_ylabel("Unique channels per six-slot cycle, $U$")
+        ax.set_ylabel("Unique channels per cycle, $U$")
         ax.set_ylim(0, 6.35)
         ax.set_title("(c) S1 spread: observed and analytical")
         ax.legend(
@@ -572,7 +572,7 @@ def _effect_panel(
         [*[FACTOR_LABELS[f] for f in FACTOR_ORDER], "Macro", "Checkpoints"],
     )
     ax.invert_yaxis()
-    ax.set_xlabel(r"Goodput effect, $\Delta$ (packets/slot); cell bars: 5th–95th bootstrap")
+    ax.set_xlabel(r"Goodput difference, $\Delta$ (packets/slot)")
     ax.set_title(title)
     _finish_axis(ax, axis="x")
 
@@ -590,16 +590,18 @@ def render_effects(data: dict[str, Any]) -> bytes:
         _effect_panel(
             axes[0, 0],
             [row for row in collision_rows if row["panel"] == "a"],
-            title="(a) Full DQN minus phase-orthogonal",
+            title="(a) Double-DQN: full $-$\nphase-orthogonal",
             margin=0.05,
         )
+        axes[0, 0].set_ylabel(r"Factor cell: process and $(\rho,\lambda)$")
         _effect_panel(
             axes[0, 1],
             [row for row in collision_rows if row["panel"] == "b"],
-            title="(b) Full DQN minus outcome-history-removed",
+            title="(b) Double-DQN: full $-$\noutcome-history-removed",
             margin=None,
         )
         axes[0, 1].tick_params(labelleft=False)
+        axes[0, 1].set_ylabel("Factor cell (same order as panel a)")
 
         ax = axes[1, 0]
         policy_cell_rows: dict[str, list[float]] = defaultdict(list)
@@ -615,7 +617,8 @@ def render_effects(data: dict[str, Any]) -> bytes:
             ax.scatter([float(values.mean())], [idx], s=30, marker="D", color=BLACK, edgecolor="white", linewidth=0.35, zorder=4)
         ax.set_yticks(y, [POLICY_LABELS[p] for p in POLICY_ORDER])
         ax.invert_yaxis()
-        ax.set_xlabel("Goodput (packets/slot): ○ cell; ◆ equal-cell macro")
+        ax.set_xlabel("Goodput (packets/slot)")
+        ax.set_ylabel("Policy")
         ax.set_title("(c) Eight cell means and equal-cell policy macro")
         _finish_axis(ax, axis="x")
 
@@ -641,6 +644,7 @@ def render_effects(data: dict[str, Any]) -> bytes:
         ax.invert_yaxis()
         ax.set_xlim(-0.0145, 0.0145)
         ax.set_xlabel("Change from all-data estimate (packets/slot)")
+        ax.set_ylabel("Deletion diagnostic")
         ax.set_title("(d) One-block deletion sensitivity ranges")
         _finish_axis(ax, axis="x")
 
@@ -673,8 +677,17 @@ def render_mechanisms(data: dict[str, Any]) -> bytes:
         ax.set_xlabel("Training seed (six labels shown)")
         ax.set_ylabel("Validation agreement (%)")
         ax.set_ylim(0, 66)
-        ax.set_title("(a) Abstention ceiling and attempted-only fit")
-        ax.legend(loc="lower right", frameon=False)
+        ax.set_title("(a) Full Double-DQN: abstention and attempted-only fit")
+        # Both curves leave a deliberate mid-range band. Keeping the legend
+        # there preserves the data scale without covering either series.
+        ax.legend(
+            loc="center",
+            bbox_to_anchor=(0.5, 0.43),
+            frameon=True,
+            facecolor="white",
+            edgecolor="none",
+            framealpha=0.96,
+        )
         _finish_axis(ax)
 
         ax = axes[0, 1]
@@ -688,7 +701,15 @@ def render_mechanisms(data: dict[str, Any]) -> bytes:
         ax.scatter([0], [dqn_values.mean()], s=38, marker="D", color=BLUE, edgecolor="white", linewidth=0.4, zorder=4)
         ax.scatter([1], [positive["logical_exact_agreement"] * 100], s=50, marker="o", color=GREEN, edgecolor="white", linewidth=0.4, zorder=4)
         ax.scatter([2], [positive["physical_best_order_agreement"] * 100], s=50, marker="X", color=VERMILLION, edgecolor="white", linewidth=0.4, zorder=4)
-        ax.set_xticks([0, 1, 2], ["DQN: logical\nattempts", "Ascending control:\nlogical", "Same control:\nphysical-pooled†"])
+        ax.set_xticks(
+            [0, 1, 2],
+            [
+                "Full Double-DQN:\nlogical attempts",
+                "Ascending control:\nlogical",
+                "Same control:\nphysical-pooled†",
+            ],
+        )
+        ax.set_xlabel("Policy and coordinate treatment")
         ax.set_ylabel("Best masked-priority agreement (%)")
         ax.set_ylim(0, 108)
         ax.set_title("(b) Coordinate-aware certificate and control")
@@ -706,8 +727,8 @@ def render_mechanisms(data: dict[str, Any]) -> bytes:
             "quality_greedy_persistent",
         )
         short_labels = (
-            "Full DQN",
-            "Outcome-history\nremoved",
+            "Full Double-DQN",
+            "Outcome-history\nremoved Double-DQN",
             "Phase-orthogonal",
             "Quality-greedy",
         )
@@ -728,17 +749,19 @@ def render_mechanisms(data: dict[str, Any]) -> bytes:
             ax.bar(base_x + (p_index - 1.5) * width, values, width, label=label, color=color, zorder=2)
         ax.set_xticks(base_x, [label for _, label in metrics])
         ax.set_ylabel("Rate or index (%)")
-        ax.set_ylim(0, 108)
+        # Reserve an explicit legend band above the tallest (sub-100%) bar.
+        ax.set_ylim(0, 120)
+        ax.set_xlabel("Metric (first 3 pooled; last 2 equal-cell means)")
         ax.set_title("(c) Operating metrics with explicit denominators")
-        ax.legend(loc="upper center", frameon=False, ncol=2, columnspacing=1.0)
-        ax.text(
-            0.99,
-            0.02,
-            "first 3: pooled events; last 2: equal-cell means",
-            transform=ax.transAxes,
-            ha="right",
-            va="bottom",
-            bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.90, "pad": 1.0},
+        ax.legend(
+            loc="upper center",
+            frameon=True,
+            facecolor="white",
+            edgecolor="none",
+            framealpha=0.96,
+            ncol=2,
+            columnspacing=0.8,
+            handletextpad=0.45,
         )
         _finish_axis(ax)
 
@@ -763,10 +786,20 @@ def render_mechanisms(data: dict[str, Any]) -> bytes:
             if high[idx] > bound:
                 ax.annotate("overloaded", (idx + 0.10, high[idx]), xytext=(0, 6), textcoords="offset points", ha="center", color=VERMILLION)
         ax.set_xticks(x, [r"$\rho=0.30$", r"$\rho=0.60$"])
+        ax.set_xlabel(r"Occupancy probability, $\rho$")
         ax.set_ylabel("Packets per slot")
-        ax.set_ylim(0, 4.45)
+        # The upper band is reserved for the legend, above every datum and
+        # overload annotation.
+        ax.set_ylim(0, 5.35)
         ax.set_title("(d) Offered load versus analytical service bound")
-        ax.legend(loc="lower left", frameon=False)
+        ax.legend(
+            loc="upper center",
+            frameon=True,
+            facecolor="white",
+            edgecolor="none",
+            framealpha=0.96,
+            ncol=1,
+        )
         _finish_axis(ax)
 
         return _render_pdf(fig, title="Collision-aware policy mechanism and operating diagnostics")
@@ -819,14 +852,36 @@ def build_manifest(data: dict[str, Any], figures: dict[str, bytes]) -> bytes:
                 "d": "Matched-row propagation of the generator-dispersion contrast (7,200,000 pairs).",
             },
             "fig_collision_effects.pdf": {
-                "a": "Full collision-aware DQN minus phase-orthogonal goodput: eight cell effects with sealed 5th--95th bootstrap intervals, 20 checkpoint effects, and equal-cell macro.",
-                "b": "Full collision-aware DQN minus outcome-history-removed DQN under the same display grammar.",
+                "a": (
+                    "Full prospective collision-aware Double-DQN minus "
+                    "phase-orthogonal goodput: eight cell effects with sealed "
+                    "5th--95th bootstrap intervals, 20 checkpoint effects, and "
+                    "equal-cell macro."
+                ),
+                "b": (
+                    "Full prospective collision-aware Double-DQN minus "
+                    "outcome-history-removed Double-DQN under the same display "
+                    "grammar."
+                ),
                 "c": "Eight factorial-cell goodput means and their arithmetic equal-cell macro for all nine policies; the centralized policy is descriptive only.",
                 "d": "Leave-one-training-unit and shift-preserving leave-one-environment-block ranges, expressed as change from the all-data point estimate.",
             },
             "fig_collision_mechanisms.pdf": {
-                "a": "Per-checkpoint seven-action attempt ceiling versus calibration-selected attempted-only logical validation agreement; dotted lines are equal-checkpoint/equal-factor means.",
-                "b": "Attempted-only logical-coordinate DQN certificates and the 6x63 ascending-priority positive control. Physical pooling of that known control is displayed only as a diagnostic demonstration of coordinate confounding, never as a policy-mechanism result.",
+                "a": (
+                    "Per-checkpoint seven-action attempt ceiling versus "
+                    "calibration-selected attempted-only logical validation "
+                    "agreement for the 20 full prospective Double-DQN "
+                    "checkpoints; dotted lines are equal-checkpoint/equal-factor "
+                    "means."
+                ),
+                "b": (
+                    "Attempted-only logical-coordinate certificates for the 20 "
+                    "full prospective Double-DQN checkpoints and the 6x63 "
+                    "ascending-priority positive control. Physical pooling of "
+                    "that known control is displayed only as a diagnostic "
+                    "demonstration of coordinate confounding, never as a "
+                    "policy-mechanism result."
+                ),
                 "c": "Attempt and failure rates use pooled event counts with named denominators; opportunity utilization and 15-node Jain fairness are equal-cell macro means.",
                 "d": "Verified optimistic quality-aware service upper bound versus offered load 15 lambda; overload is asserted only where offered load exceeds the upper bound.",
             },
