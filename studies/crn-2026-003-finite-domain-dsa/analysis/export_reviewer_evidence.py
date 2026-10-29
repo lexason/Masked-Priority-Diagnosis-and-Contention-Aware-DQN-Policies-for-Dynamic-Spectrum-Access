@@ -28,7 +28,7 @@ DEFAULT_PROJECT_ROOT = SCRIPT.parents[3]
 DEFAULT_STUDY_ROOT = SCRIPT.parents[1]
 DEFAULT_GITHUB_RECEIPT = Path(
     "studies/crn-2026-003-finite-domain-dsa/release/"
-    "github_current_commit_v1.1.0_receipt.json"
+    "github_current_commit_v1.3.0_receipt.json"
 )
 
 # Workspace lookup paths and public-deposit locators are deliberately separate.
@@ -1656,9 +1656,15 @@ def build_claim_routes(
         figure = project_root / "main/manuscript/figures" / name
         verify_file(figure, identity["sha256"], f"numbered publication figure {name}")
 
+    release_config = read_json(
+        project_root
+        / "studies/crn-2026-003-finite-domain-dsa/release/release_config.json"
+    )
+    release = release_config["release"]
+    release_version = release["version"]
     zenodo_receipt_relative = (
         "studies/crn-2026-003-finite-domain-dsa/release/"
-        "zenodo_new_version_v1.1.0_draft_receipt.json"
+        f"zenodo_new_version_v{release_version}_draft_receipt.json"
     )
     github_receipt_file, github_receipt_relative = _project_path(
         project_root, github_receipt_path,
@@ -1667,17 +1673,19 @@ def build_claim_routes(
     github_receipt = read_json(github_receipt_file)
     new_doi = zenodo_receipt["new_draft_identity"]["reserved_doi"]
     repository = github_receipt["repository"]
-    require(new_doi == "10.5281/zenodo.23527228", "new-version DOI drift")
+    require(new_doi == release["doi"], "new-version DOI drift")
     require(
         repository
         == "https://github.com/lexason/Masked-Priority-Diagnosis-and-Contention-Aware-DQN-Policies-for-Dynamic-Spectrum-Access",
         "public repository route drift",
     )
     zenodo_receipt_reference = source_ref(zenodo_receipt_relative)
-    zenodo_receipt_reference["receipt_scope"] = "v1.1_version_reservation"
+    zenodo_receipt_reference["receipt_scope"] = (
+        f"v{release_version}_version_reservation"
+    )
     github_receipt_reference = source_ref(github_receipt_relative)
     github_receipt_reference["receipt_scope"] = (
-        "v1.1_final_public_commit_observation"
+        f"v{release_version}_final_public_commit_observation"
         if github_receipt_relative == DEFAULT_GITHUB_RECEIPT.as_posix()
         else "pre_push_staging_observation"
     )
@@ -1769,7 +1777,7 @@ def build_claim_routes(
                     "label": "tab:related-work-matrix",
                     "subject": "bounded comparison with five selected DSA studies",
                     "manuscript_source": {
-                        **source_ref("main/manuscript/related_work_matrix.tex"),
+                        **source_ref("main/manuscript/main.tex"),
                         "locator": "tab:related-work-matrix",
                         "status": "hash-bound non-public manuscript source; not sealed scientific evidence",
                     },
@@ -1787,7 +1795,7 @@ def build_claim_routes(
                     "label": "tab:study-a-scenarios",
                     "subject": "Study A scenario definitions",
                     "manuscript_source": {
-                        **source_ref("main/manuscript/masked_priority_body.tex"),
+                        **source_ref("main/manuscript/main.tex"),
                         "locator": "tab:study-a-scenarios",
                         "status": "hash-bound non-public manuscript source; not sealed scientific evidence",
                     },
@@ -1803,7 +1811,7 @@ def build_claim_routes(
                     "label": "tab:prospective-results",
                     "subject": "Study B decision results",
                     "manuscript_source": {
-                        **source_ref("main/manuscript/masked_priority_body.tex"),
+                        **source_ref("main/manuscript/main.tex"),
                         "locator": "tab:prospective-results",
                         "status": "hash-bound non-public manuscript source; not sealed scientific evidence",
                     },
@@ -2005,7 +2013,7 @@ def parser() -> argparse.ArgumentParser:
         default=DEFAULT_GITHUB_RECEIPT,
         help=(
             "project-relative or absolute public GitHub verification receipt; "
-            "defaults to the final v1.1.0 receipt. The legacy receipt may be "
+            "defaults to the final current-version receipt. A legacy receipt may be "
             "supplied explicitly only for pre-push staging."
         ),
     )

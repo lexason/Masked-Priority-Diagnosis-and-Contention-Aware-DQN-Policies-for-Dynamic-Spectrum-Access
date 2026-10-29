@@ -386,9 +386,9 @@ def test_r4_source_access_and_numbered_element_routes() -> None:
     assert chronology["events"][0]["at_utc"] < chronology["events"][1]["at_utc"]
 
     access = routing["public_access_routes"]
-    assert access["target_zenodo_version"]["doi"] == "10.5281/zenodo.23527228"
+    assert access["target_zenodo_version"]["doi"] == "10.5281/zenodo.23778330"
     assert access["target_zenodo_version"]["doi_url"] == (
-        "https://doi.org/10.5281/zenodo.23527228"
+        "https://doi.org/10.5281/zenodo.23778330"
     )
     assert access["github"]["repository"] == (
         "https://github.com/lexason/"
