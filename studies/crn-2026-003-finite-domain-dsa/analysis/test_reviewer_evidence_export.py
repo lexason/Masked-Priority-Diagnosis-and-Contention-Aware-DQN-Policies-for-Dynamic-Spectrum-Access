@@ -32,6 +32,21 @@ BASE_ARCHIVE = PROJECT_ROOT / ("main_" + "archive") / (
     "submission_collision_aware_dsa_20261017/"
     "Collision_Aware_DSA_Reproducibility_20261017.zip"
 )
+PUBLIC_PACKAGE = (PROJECT_ROOT / "PUBLIC_SANITIZATION.json").is_file()
+PUBLIC_COMPACT_ARCHIVE = PROJECT_ROOT / EXPORT.PUBLIC_COMPACT_REPLICATION
+
+
+def _public_member_context() -> tuple[set[str], bytes]:
+    """Return public members and compact-archive bytes in either layout."""
+    if PUBLIC_PACKAGE:
+        members = {
+            path.relative_to(PROJECT_ROOT).as_posix()
+            for path in PROJECT_ROOT.rglob("*")
+            if path.is_file() and ".venv" not in path.parts
+        }
+        return members, PUBLIC_COMPACT_ARCHIVE.read_bytes()
+    with zipfile.ZipFile(BASE_ARCHIVE) as outer:
+        return set(outer.namelist()), outer.read(EXPORT.PUBLIC_COMPACT_REPLICATION)
 
 
 def _json(name: str) -> dict:
@@ -178,9 +193,7 @@ def _access_records(value: object) -> Iterator[dict[str, object]]:
 
 
 def test_all_declared_public_access_routes_resolve_or_are_hash_only() -> None:
-    with zipfile.ZipFile(BASE_ARCHIVE) as outer:
-        outer_names = set(outer.namelist())
-        compact = outer.read(EXPORT.PUBLIC_COMPACT_REPLICATION)
+    outer_names, compact = _public_member_context()
     with zipfile.ZipFile(io.BytesIO(compact)) as inner:
         inner_names = set(inner.namelist())
 
@@ -216,6 +229,10 @@ def test_all_declared_public_access_routes_resolve_or_are_hash_only() -> None:
 
 def test_public_repository_routes_follow_github_allowlist_and_exclude_receipts() -> None:
     release_dir = STUDY_ROOT / "release"
+    if not (release_dir / "build_github_stage.py").is_file():
+        pytest.skip(
+            "workspace-only GitHub staging tool is intentionally omitted from the public package"
+        )
     sys.path.insert(0, str(release_dir))
     try:
         github_builder = importlib.import_module("build_github_stage")
@@ -299,13 +316,19 @@ def test_documented_entry_points_use_extracted_package_layout() -> None:
     assert "--study-root prospective_collision_study" in reanalyse
     assert "--out-dir reproduced_reanalysis" in reanalyse
 
-    config = json.loads(
-        (STUDY_ROOT / "release/release_config.json").read_text(encoding="utf-8")
-    )
-    assert "analysis/recompute_inference.py" in config["article_reanalysis"]
-    assert "analysis/reanalyse.py" in config["article_reanalysis"]
-    with zipfile.ZipFile(BASE_ARCHIVE) as outer:
-        assert summary in outer.namelist()
+    if PUBLIC_PACKAGE:
+        readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
+        assert "analysis/recompute_inference.py" in readme
+        assert "article_reanalysis/recompute_inference.py" in readme
+        assert (PROJECT_ROOT / summary).is_file()
+    else:
+        config = json.loads(
+            (STUDY_ROOT / "release/release_config.json").read_text(encoding="utf-8")
+        )
+        assert "analysis/recompute_inference.py" in config["article_reanalysis"]
+        assert "analysis/reanalyse.py" in config["article_reanalysis"]
+        with zipfile.ZipFile(BASE_ARCHIVE) as outer:
+            assert summary in outer.namelist()
 
 
 def test_cycles_boundary_inputs_and_paired_effect_precision() -> None:
@@ -399,6 +422,10 @@ def test_r4_source_access_and_numbered_element_routes() -> None:
 
 
 def test_github_receipt_default_and_explicit_staging_override() -> None:
+    if PUBLIC_PACKAGE:
+        pytest.skip(
+            "receipt-staging regression test requires intentionally omitted workspace provenance inputs"
+        )
     args = EXPORT.parser().parse_args([])
     assert args.github_receipt == EXPORT.DEFAULT_GITHUB_RECEIPT
     assert args.github_receipt.as_posix().endswith(
@@ -440,6 +467,10 @@ def test_github_receipt_default_and_explicit_staging_override() -> None:
 
 
 def test_regeneration_is_byte_deterministic(tmp_path: Path) -> None:
+    if PUBLIC_PACKAGE:
+        pytest.skip(
+            "full reviewer-export regeneration requires intentionally omitted sealed workspace inputs"
+        )
     rebuilt = tmp_path / "reviewer"
     receipt_scope = (
         _json("claim_to_artifact_manifest.json")["public_access_routes"]

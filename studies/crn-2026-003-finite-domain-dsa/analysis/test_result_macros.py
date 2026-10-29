@@ -59,7 +59,7 @@ def test_result_macros_are_unique_and_registered_to_claims() -> None:
     registered = {
         "\\" + macro for claim in registry["claims"] for macro in claim.get("value_macros", [])
     }
-    assert len(definitions) == 157
+    assert len(definitions) == 162
     assert definitions == registered
 
 

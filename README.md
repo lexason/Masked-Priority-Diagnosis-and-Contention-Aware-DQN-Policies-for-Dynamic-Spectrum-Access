@@ -14,14 +14,19 @@ materials are distributed through the article-specific Zenodo record. The six
 multi-gigabyte archival trace ZIPs are intentionally excluded from the minimum
 deposit; native row-level revalidation of trace-derived audits requires that
 separately sealed corpus. The article-specific
-version DOI is 10.5281/zenodo.23527228; consult that DOI
-landing page for the record's current availability. The separately sealed evidence
-record at https://doi.org/10.5281/zenodo.23393130 is provenance only and
-is related as `isDerivedFrom`.
+version DOI is https://doi.org/10.5281/zenodo.23766140;
+consult that DOI landing page for the current versioned record. Historical
+lineage remains in the package's machine-readable provenance rather than in
+this current-release README.
+
+The manuscript authoring path `analysis/recompute_inference.py` is released as
+`article_reanalysis/recompute_inference.py`. The top-level `README.md` in the
+versioned Zenodo archive gives the exact invocation from the extracted package
+root.
 
 The installable software package remains version
 `0.1.0`; the article-specific dataset/release is
-version `1.1.0`. These identifiers describe different artifact scopes.
+version `1.2.0`. These identifiers describe different artifact scopes.
 
 The GitHub tree deliberately excludes manuscript files, supplementary files,
 author portraits, editorial material, credentials, the workspace research

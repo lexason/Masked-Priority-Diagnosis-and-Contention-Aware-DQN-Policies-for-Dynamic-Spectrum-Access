@@ -131,7 +131,7 @@ def test_generated_macro_interface_and_claim_coverage_are_hash_bound() -> None:
         "\\" + macro for claim in registry["claims"] for macro in claim.get("value_macros", [])
     }
     assert definitions
-    assert len(definitions) == 157
+    assert len(definitions) == 162
     assert definitions == registered
 
 
